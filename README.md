@@ -5,8 +5,11 @@
 http://www.ipdeny.com/ipblocks/data/aggregated/
 
 2. Syn flood
+
 #echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+
 #echo 2048 > /proc/sys/net/ipv4/tcp_max_syn_backlog
+
 #echo 3 > /proc/sys/net/ipv4/tcp_synack_retries
 
 Edit /etc/sysctl.conf
