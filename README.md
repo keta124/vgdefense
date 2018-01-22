@@ -24,8 +24,17 @@
   cp systemctl/vgdefense.service /etc/systemd/system/
   
   systemctl deamon-reload
+  
+ 4. Crontab
+ 
+  systemctl start crond; systemctl enable crond
+ 
+  0 1 * * * > /etc/csf/csf.deny
+  
+  */10 * * * * /usr/sbin/csf -r
+ 
 
-3. Syn flood
+5. Syn flood
 
   echo 1 > /proc/sys/net/ipv4/tcp_syncookies;
   
@@ -41,13 +50,13 @@ net.ipv4.tcp_max_syn_backlog = 2048
 
 net.ipv4.tcp_synack_retries = 3
 
-4. Check connection
+6. Check connection
 
   netstat -nat | grep ESTABLISHED
   
   netstat -nat | grep ESTABLISHED | awk '{print $5}' | cut -d: -f1 |sort | uniq -d | sort -n |tee ips_connection.log
 
-5. Iptables
+7. Iptables
 
   iptables-save>/etc/iptables_origin_save
   
