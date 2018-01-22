@@ -9,7 +9,9 @@
   
   yum -y install wget perl unzip net-tools perl-libwww-perl perl-LWP-Protocol-https perl-GDGraph perl-libwww-perl.noarch perl-Time-HiRes bind-utils  -y
   
-  tar -xzf csf.tgz;
+  gzip -d csf.tgz
+  
+  tar -xvzf csf.tar;
   
   cd csf;
   
