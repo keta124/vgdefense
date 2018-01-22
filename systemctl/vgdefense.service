@@ -1,0 +1,11 @@
+[Unit]
+Description=vgdefense
+
+[Service]
+Type=simple
+ExecStart=/bin/python /opt/vgdefense/vgdefense.py
+Restart=always
+WorkingDirectory=/
+
+[Install]
+WantedBy=multi-user.target
