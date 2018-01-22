@@ -17,6 +17,13 @@
   
   sh install.sh
 
+3. Vgdefense as service
+
+  pip install -r requirements.txt
+  
+  cp systemctl/vgdefense.service /etc/systemd/system/
+  
+  systemctl deamon-reload
 
 3. Syn flood
 
