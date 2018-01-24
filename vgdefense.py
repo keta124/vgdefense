@@ -38,7 +38,7 @@ class Vg_Defense(object):
         else :
           result[str(geo)] = 1
     print result
-    result_filter =  dict(filter(lambda x:x[1]>30, result.items()))
+    result_filter =  dict(filter(lambda x:x[1]>50, result.items()))
     countries = list(IP_BLACKLIST)
     for key in result_filter.keys():
       key_ = key.lower()
