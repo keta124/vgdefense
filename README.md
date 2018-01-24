@@ -7,7 +7,7 @@
 
   cd config;
   
-  yum -y install wget perl unzip net-tools perl-libwww-perl perl-LWP-Protocol-https perl-GDGraph perl-libwww-perl.noarch perl-Time-HiRes bind-utils python2-pip -y
+  yum -y install wget perl unzip net-tools perl-libwww-perl perl-LWP-Protocol-https perl-GDGraph perl-libwww-perl.noarch perl-Time-HiRes bind-utils python2-pip git
   
   gzip -d csf.tgz
   
@@ -23,7 +23,11 @@
   
   cp systemctl/vgdefense.service /etc/systemd/system/
   
-  systemctl deamon-reload
+  systemctl daemon-reload
+  
+  cp config/csf.conf /etc/csf/
+  
+  *** Edit testing => 0
   
  4. Crontab
  
