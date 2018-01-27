@@ -37,7 +37,7 @@ class Vg_Defense(object):
           result[str(geo)] += 1
         else :
           result[str(geo)] = 1
-    print result
+    # print result
     result_filter =  dict(filter(lambda x:x[1]>30, result.items()))
     countries = list(IP_BLACKLIST)
     for key in result_filter.keys():
@@ -51,7 +51,6 @@ class Vg_Defense(object):
         blacklist_countries.append(country)
     file = open(PATH + "/config/blacklist_countries", "r+")
     lines = [line.rstrip('\n') for line in file]
-    print lines
     adds =[]
     for blc in blacklist_countries:
       if blc not in lines :
@@ -68,8 +67,13 @@ class Vg_Defense(object):
       with open(file_name) as f:
         lines = [line.rstrip('\n') for line in f]
         ips.extend(lines)
-    file = open("/etc/csf/csf.deny", "w")
-    file.writelines( list( "%s\n" % item for item in ips ) ) 
+    file = open("/etc/csf/csf.deny", "r+")
+    csf = [line.rstrip('\n') for line in file]
+    ips_ = []
+    for ip in ips_:
+      if ip not in csf:
+        ips_.append(ip)
+    file.writelines( list( "%s\n" % item for item in ips_ ) )
     file.close()
 
 if __name__ == '__main__':
@@ -78,5 +82,8 @@ if __name__ == '__main__':
       vgd = Vg_Defense()
       vgd.execute()
       time.sleep(600)
+    # vgd = Vg_Defense()
+    # vgd.execute()
+    #time.sleep(600)
   except Exception as e: 
     print(e)
